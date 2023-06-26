@@ -8,8 +8,11 @@ from grasp import grasp
 
 
 if __name__ == '__main__':
+    mejores_n = 2
+    # Indico los grafos a generar según su cantidad de nodos
+    grafos_a_generar = [5, 10, 20]
 
-    for n in [5, 10, 20]:
+    for n in grafos_a_generar:
         print(f"Generando grafo de {n} nodos")
         generar(n)
         with open("input.json", "r") as file:
@@ -17,7 +20,6 @@ if __name__ == '__main__':
             loops = n
             incremento = n * 10
             limite = (n ** 2) * 10
-            mejores_n = 2
             x = []
             y = []
             print(f"Calculando camino hamiltoniano minimo desde {loops} repeticiones, incremento de {incremento}"
