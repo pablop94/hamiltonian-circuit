@@ -3,11 +3,13 @@ import json
 from matplotlib import pyplot as plt
 
 from generador import generar
+from graph_draw import draw_graph
 from grasp import grasp
+
 
 if __name__ == '__main__':
 
-    for n in [8, 10, 20]:
+    for n in [5, 10, 20]:
         print(f"Generando grafo de {n} nodos")
         generar(n)
         with open("input.json", "r") as file:
@@ -29,3 +31,6 @@ if __name__ == '__main__':
             plt.plot(x, y)
             plt.savefig(f"resultados/grasp-{len(grafo)}.png")
             plt.close()
+
+        if len(grafo) < 10:
+            draw_graph(grafo, result[1])
