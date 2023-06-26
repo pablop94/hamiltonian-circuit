@@ -7,13 +7,13 @@ from repartidor_02 import repartidor
 from repartidor_03 import busqueda_local
 
 
-def grasp(grafo, loops):
+def grasp(grafo, loops, mejores_n):
     costo_actual = math.inf
     resultado = None
 
     i = 0
     while i < loops:
-        resultado_parcial = busqueda_local(grafo, repartidor(grafo))
+        resultado_parcial = busqueda_local(grafo, repartidor(grafo, mejores_n=mejores_n))
         nuevo_costo = costo(grafo, resultado_parcial)
         if nuevo_costo < costo_actual:
             resultado = resultado_parcial
