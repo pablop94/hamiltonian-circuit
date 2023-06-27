@@ -22,23 +22,3 @@ def grasp(grafo, loops, mejores_n):
         i += 1
 
     return costo_actual, resultado
-
-
-if __name__ == '__main__':
-    with open("input.json", "r") as file:
-        grafo = json.load(file)
-        start_loops = 1
-        increment = 1
-        limit = 100
-        x = []
-        y = []
-
-        while start_loops < limit:
-            result = grasp(grafo, start_loops)
-            x.append(start_loops)
-            y.append(result[0])
-            start_loops += increment
-
-        plt.plot(x, y)
-        plt.savefig(f"resultados/grasp-{len(grafo)}.png")
-        plt.close()

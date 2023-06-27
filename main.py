@@ -1,4 +1,5 @@
 import json
+import os.path
 
 from matplotlib import pyplot as plt
 
@@ -7,15 +8,28 @@ from graph_draw import draw_graph
 from grasp import grasp
 
 
+def validate_file(file_name):
+    if not os.path.exists(file_name):
+        print("No existen los grafos de input, cambia la variable generar_grafos a True para crearlos")
+        exit(1)
+
+
 if __name__ == '__main__':
     mejores_n = 2
     # Indico los grafos a generar según su cantidad de nodos
     grafos_a_generar = [5, 10, 20]
+    regenerar = False
 
     for n in grafos_a_generar:
-        print(f"Generando grafo de {n} nodos")
-        generar(n)
-        with open("input.json", "r") as file:
+        if regenerar:
+            print(f"Generando grafo de {n} nodos")
+            generar(n)
+
+        filename = f"input{n}.json"
+
+        validate_file(filename)
+
+        with open(filename, "r") as file:
             grafo = json.load(file)
             loops = n
             incremento = n * 10

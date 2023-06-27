@@ -13,7 +13,7 @@ def generar_grafo(n, max_cost):
 
 def generar(n, max_cost=5):
     matriz = generar_grafo(n, max_cost)
-    with open("input.json", "w") as file:
+    with open(f"input{n}.json", "w") as file:
         file.write(json.dumps(matriz))
 
 
