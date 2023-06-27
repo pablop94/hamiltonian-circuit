@@ -6,7 +6,7 @@ def aristas(adyacentes):
 
 
 def ordenar_por_peso(adyacentes):
-    return list(sorted(adyacentes, key=lambda x: x[1]))
+    return sorted(adyacentes, key=lambda x: x[1])
 
 
 def costo_camino(grafo, solucion):
