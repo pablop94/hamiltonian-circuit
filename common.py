@@ -9,5 +9,10 @@ def ordenar_por_peso(adyacentes):
     return list(sorted(adyacentes, key=lambda x: x[1]))
 
 
-def costo(grafo, solucion):
-    return sum(grafo[start][end] for start, end in solucion)
+def costo_camino(grafo, solucion):
+    return sum(costo_arista(grafo, arista) for arista in solucion)
+
+
+def costo_arista(grafo, arista):
+    start, end = arista
+    return grafo[start][end]

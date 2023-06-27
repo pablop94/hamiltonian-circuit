@@ -1,8 +1,8 @@
-from common import costo
+from common import costo_camino
 
 
 def busqueda_local(grafo, solucion):
-    costo_actual = costo(grafo, solucion)
+    costo_actual = costo_camino(grafo, solucion)
 
     posible_mejora = solucion.copy()
     fin_anterior = None
@@ -13,7 +13,7 @@ def busqueda_local(grafo, solucion):
             posible_mejora[i] = fin, fin_anterior
             next_index = (i+1) % len(posible_mejora)
             posible_mejora[next_index] = fin_anterior, posible_mejora[next_index][1]
-            nuevo_costo = costo(grafo, posible_mejora)
+            nuevo_costo = costo_camino(grafo, posible_mejora)
             if costo_actual > nuevo_costo:
                 costo_actual = nuevo_costo
             else:
