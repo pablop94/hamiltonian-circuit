@@ -25,7 +25,7 @@ if __name__ == '__main__':
             print(f"Generando grafo de {n} nodos")
             generar(n)
 
-        filename = f"input{n}.json"
+        filename = f"inputs/input{n}.json"
 
         validate_file(filename)
 
