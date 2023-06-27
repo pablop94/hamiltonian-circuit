@@ -1,3 +1,4 @@
+import argparse
 import json
 import os.path
 
@@ -14,11 +15,7 @@ def validate_file(file_name):
         exit(1)
 
 
-if __name__ == '__main__':
-    mejores_n = 2
-    # Indico los grafos a generar según su cantidad de nodos
-    grafos_a_generar = [5, 10, 20]
-    regenerar = False
+def main(grafos_a_generar, mejores_n=2, regenerar=False):
 
     for n in grafos_a_generar:
         if regenerar:
@@ -50,3 +47,17 @@ if __name__ == '__main__':
 
         if len(grafo) < 10:
             draw_graph(grafo, result[1])
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    "nodes", nargs="+", type=int, help="La cantidad de nodos de los grafos a analizar, puede ser una lista"
+)
+parser.add_argument("--bestn", type=int, help="La cantidad de elementos a tomar por greedy a la hora de randomizar")
+parser.add_argument(
+    "-g", "--generate", action="store_true", help="Indica si regenera los grafos antes de hacer el cálculo"
+)
+
+args = parser.parse_args()
+
+main(args.nodes, args.bestn, args.generate)

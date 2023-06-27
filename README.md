@@ -8,12 +8,13 @@ pip install -r requirements.txt
 
 ## uso
 ```bash
-python main.py
+python main.py N [N...] [--bestn 2] [-g]
 ```
 
-## configuración
-Se pueden cambiar los grafos a generar, en el archivo `main.py` cambiar la variable `grafos_a_generar` por los grafos que se quieran generar, indicando la cantidad de nodos.
+### detalles
+Al comando se le pasan la cantidad de nodos de los grafos a analizar, pueden ser varios.
 
-La idea es cambiar los parámetros con los mismos grafos y poder evaluar distintos resultados. Si se quisiese regenerar el conjunto de grafos, se puede cambiar la variable `regenerar` a `True`.
+Si queremos generar grafos nuevos usamos `-g`.
 
-Además se puede cambiar la cantidad de resultados a randomizar por la parte greedy, actualmente en 2, cambiando la variable `mejores_n`.
+Si queremos modificar la cantidad de elementos que toma el greedy para randomizar, podemos usar
+el parámetro `--bestn`.
